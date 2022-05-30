@@ -1,11 +1,11 @@
+import { TodoComponents } from '@joindev/todo/components';
+import { MainLayout } from '@joindev/todo/layouts';
+
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
   return (
-   <div>Index</div>
+    <MainLayout>
+      <TodoComponents />
+    </MainLayout>
   );
 }
 

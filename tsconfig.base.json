@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
+      "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "todo": "apps/todo",
-    "todo-e2e": "apps/todo-e2e"
+    "todo-components": "libs/todo/components",
+    "todo-e2e": "apps/todo-e2e",
+    "todo-layouts": "libs/todo/layouts"
   }
 }
