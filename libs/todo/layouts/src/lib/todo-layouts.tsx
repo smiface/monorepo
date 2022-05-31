@@ -12,10 +12,10 @@ export const MainLayout = ({ children }: { children?: React.ReactNode }) => {
       <header>
         {/* <Link pathHref="/about"> */}
         <Link href="/about">
-          <a className="p-2">about</a>
+          <a className="p-2" href="/about">about</a>
         </Link>
         <Link href="/todo/1">
-          <a className="p-2">todo</a>
+          <a className="p-2" href="/todo/1">todo</a>
         </Link>
       </header>
       {children}

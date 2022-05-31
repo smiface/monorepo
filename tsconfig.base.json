@@ -15,8 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@joindev/hooks": ["libs/hooks/src/index.ts"],
+      "@joindev/todo//hooks": ["libs/todo/hooks/src/index.ts"],
       "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
-      "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"]
+      "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"],
+      "@joindev/todo/store" : ["libs/todo/store"]
     }
   },
   "exclude": ["node_modules", "tmp"]
