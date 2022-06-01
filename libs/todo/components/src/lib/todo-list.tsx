@@ -1,15 +1,15 @@
 import { observer } from 'mobx-react-lite';
-import {TTodoItem} from '../../../types';
-import TodoItem from './todo-item';
+import { TTodoItem } from '@joindev/todo/types';
+import { TodoItem } from './todo-item';
+import { todoStore } from '@joindev/todo/store';
 
-const TodoList = (array: TTodoItem[]) => {
+// export const TodoList = observer((array: TTodoItem[]) => {
+export const TodoList = observer(() => {
   return (
     <div>
-      {array.map((el: TTodoItem) => (
+      {todoStore.array.map((el: TTodoItem) => (
         <TodoItem item={el} />
       ))}
     </div>
   );
-};
-
-export default observer(TodoList);
+});

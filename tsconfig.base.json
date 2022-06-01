@@ -19,7 +19,8 @@
       "@joindev/todo//hooks": ["libs/todo/hooks/src/index.ts"],
       "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
       "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"],
-      "@joindev/todo/store" : ["libs/todo/store"]
+      "@joindev/todo/store": ["libs/todo/store/src/index.ts"],
+      "@joindev/todo/types": ["libs/todo/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
