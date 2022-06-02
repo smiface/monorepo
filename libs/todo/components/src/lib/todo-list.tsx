@@ -6,7 +6,7 @@ import { todoStore } from '@joindev/todo/store';
 // export const TodoList = observer((array: TTodoItem[]) => {
 export const TodoList = observer(() => {
   return (
-    <div>
+    <div className=" max-w-xl">
       {todoStore.array.map((el: TTodoItem) => (
         <TodoItem item={el} />
       ))}

@@ -4,14 +4,14 @@ import '../styles/globals.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
+    <div>
+      <Head >
         <title>Welcome to todo!</title>
       </Head>
-      <main className="app">
+      <main className="app ">
         <Component {...pageProps} />
       </main>
-    </>
+    </div>
   );
 }
 
