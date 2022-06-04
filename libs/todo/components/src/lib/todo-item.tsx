@@ -2,8 +2,13 @@ import { TTodoItem } from '@joindev/todo/types';
 import { observer } from 'mobx-react-lite';
 // import Store from '../../../store/TodoStore';
 import { todoStore } from '@joindev/todo/store';
+import { Button } from '@joindev/button';
 
 export const TodoItem = observer(({ item }: { item: TTodoItem }) => {
+  function toggleTodo() {
+    todoStore.toggleTodo(item.id);
+  }
+
   return (
     <div className="border-b-2  border-b-slate-300   pt-4 pb-4">
       <p className="pt-2 pb-2">{item.title}</p>
@@ -16,16 +21,11 @@ export const TodoItem = observer(({ item }: { item: TTodoItem }) => {
         edit
       </button>
 
-      <button
-        className={
-          item.isDone
-            ? 'p-2 border-2 border-slate-300  transition duration-300 hover:bg-green-100 bg-green-200'
-            : 'p-2 border-2 border-slate-300 transition duration-300 hover:bg-red-100  bg-red-200'
-        }
-        onClick={() => todoStore.toggleTodo(item.id)}
-      >
-        {item.isDone ? 'Done' : 'Not done'}
-      </button>
+      {item.isDone ? (
+        <Button color="green" fn={toggleTodo} text="Done" />
+      ) : (
+        <Button color="red" fn={toggleTodo} text="Not done" />
+      )}
     </div>
   );
 });

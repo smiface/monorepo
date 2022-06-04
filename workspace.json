@@ -2,10 +2,11 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "button": "libs/button",
+    "rent": "apps/rent",
     "todo": "apps/todo",
     "todo--hooks": "libs/todo/hooks",
     "todo-components": "libs/todo/components",
-    "todo-e2e": "apps/todo-e2e",
     "todo-layouts": "libs/todo/layouts",
     "todo-store": "libs/todo/store",
     "todo-types": "libs/todo/types"

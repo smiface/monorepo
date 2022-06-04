@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@joindev/button": ["libs/button/src/index.ts"],
       "@joindev/hooks": ["libs/hooks/src/index.ts"],
       "@joindev/todo//hooks": ["libs/todo/hooks/src/index.ts"],
       "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
