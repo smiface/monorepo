@@ -15,13 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@joindev/apollo-main": ["libs/apollo-main/src/index.ts"],
       "@joindev/button": ["libs/button/src/index.ts"],
+      "@joindev/header": ["libs/header/src/index.ts"],
       "@joindev/hooks": ["libs/hooks/src/index.ts"],
+      "@joindev/nav-link": ["libs/nav-link/src/index.ts"],
       "@joindev/todo//hooks": ["libs/todo/hooks/src/index.ts"],
       "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
       "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"],
       "@joindev/todo/store": ["libs/todo/store/src/index.ts"],
-      "@joindev/todo/types": ["libs/todo/types/src/index.ts"]
+      "@joindev/todo/types": ["libs/todo/types/src/index.ts"],
+      "@joindev/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

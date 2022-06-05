@@ -12,7 +12,7 @@ function PaymentPage() {
 
   return (
     <MainLayout links={links}>
-      <h1 onClick={() => console.log(params)}>Current payment </h1>
+      <h1 className='border-2 border-black' onClick={() => console.log(params)}>Current payment {params.id} </h1>
     </MainLayout>
   );
 }

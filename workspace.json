@@ -2,13 +2,18 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "apollo": "apps/apollo",
+    "apollo-main": "libs/apollo-main",
     "button": "libs/button",
+    "header": "libs/header",
+    "nav-link": "libs/nav-link",
     "rent": "apps/rent",
     "todo": "apps/todo",
     "todo--hooks": "libs/todo/hooks",
     "todo-components": "libs/todo/components",
     "todo-layouts": "libs/todo/layouts",
     "todo-store": "libs/todo/store",
-    "todo-types": "libs/todo/types"
+    "todo-types": "libs/todo/types",
+    "types": "libs/types"
   }
 }

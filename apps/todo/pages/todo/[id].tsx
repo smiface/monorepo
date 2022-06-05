@@ -7,7 +7,7 @@ const links = [
   { href: '/todo', str: 'all todo' },
 ];
 
-export function TodoPage() {
+export const TodoPage = ()  => {
   const router = useRouter();
   const id = router.query['id'];
 
@@ -17,5 +17,3 @@ export function TodoPage() {
     </MainLayout>
   );
 }
-
-export default TodoPage;
