@@ -1,0 +1,44 @@
+{
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "apps/apollo-nest/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/apollo-nest",
+        "main": "apps/apollo-nest/src/main.ts",
+        "tsConfig": "apps/apollo-nest/tsconfig.app.json",
+        "assets": ["apps/apollo-nest/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/apollo-nest/src/environments/environment.ts",
+              "with": "apps/apollo-nest/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "apollo-nest:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/apollo-nest/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

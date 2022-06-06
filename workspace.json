@@ -4,6 +4,7 @@
   "projects": {
     "apollo": "apps/apollo",
     "apollo-main": "libs/apollo-main",
+    "apollo-nest": "apps/apollo-nest",
     "button": "libs/button",
     "header": "libs/header",
     "nav-link": "libs/nav-link",

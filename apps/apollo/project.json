@@ -1,63 +1,43 @@
 {
   "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
-  "sourceRoot": "apps/apollo/src",
+  "sourceRoot": "apps/apollo",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "compiler": "babel",
-        "outputPath": "dist/apps/apollo",
-        "index": "apps/apollo/src/index.html",
-        "baseHref": "/",
-        "main": "apps/apollo/src/main.tsx",
-        "polyfills": "apps/apollo/src/polyfills.ts",
-        "tsConfig": "apps/apollo/tsconfig.app.json",
-        "assets": ["apps/apollo/src/favicon.ico", "apps/apollo/src/assets"],
-        "styles": [],
-        "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "root": "apps/apollo",
+        "outputPath": "dist/apps/apollo"
       },
       "configurations": {
-        "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
-        },
-        "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/apollo/src/environments/environment.ts",
-              "with": "apps/apollo/src/environments/environment.prod.ts"
-            }
-          ],
-          "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
-        }
+        "development": {},
+        "production": {}
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "apollo:build",
-        "hmr": true
+        "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "apollo:build:development"
+          "buildTarget": "apollo:build:development",
+          "dev": true
         },
         "production": {
           "buildTarget": "apollo:build:production",
-          "hmr": false
+          "dev": false
         }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "apollo:build:production"
       }
     },
     "lint": {
