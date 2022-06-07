@@ -1,46 +1,33 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button } from '@joindev/button';
-import { useEffect } from 'react';
-
-const TODOS = gql`
-  query MyQuery {
-    test_todos {
-      author
-      done
-      date
-    }
-  }
-`;
+import { arrayExtensions } from 'mobx/dist/internal';
+import { useGetTodos } from './hooks/useGetTodos';
+import { useToggleTodo } from './hooks/useToggleTodo';
+import { TodoElement } from './types';
 
 export const Todos = () => {
-  const { loading, error, data } = useQuery(TODOS, {
-    pollInterval: 500,
-    // fetchPolicy: 'no-cache'
-    fetchPolicy: 'network-only'
-  });
+  const toggleTodo = useToggleTodo();
+  const todos = useGetTodos();
+  if (todos.loading) return <>loading</>;
+  if (todos.error) return <>error</>;
 
-  if (loading) return <>loading</>;
-  if (error) return <>error</>;
-
-  const handleClick = () => {
-    // setInterval(() => {
-    //   console.log(data);
-    // }, 500);
-  };
+  console.log(todos);
 
   return (
-    <>
-      <Button fn={handleClick}  size='md' text='btn'></Button>
+    <div>
+      <Button text="upd" fn={() => console.log(todos.data.test_todos.map((el: TodoElement) => el.done))}>
+        upd
+      </Button>
+      {todos.data.test_todos.map((el: TodoElement) => (
+        <div className='p2 border-2 border-slate-200'>
+          <h3>{el.title}</h3>
 
-      {data.test_todos.map((el: { id: number; author: string; title: string; done: boolean }) => (
-          
-        <div key={JSON.stringify(el)} onClick={()=> console.log(el)}>
-          {el.id}
-          {el.author}
-          {el.title}
-          {el.done}
+          <div key={JSON.stringify(el)}>
+            {/* <Button text={el.title + '' + el.done ? 'done' : 'not done'} fn={() => toggleTodo.handleClick(el)} /> */}
+            <Button text={el.done ? 'done' : 'not done'} fn={() => toggleTodo.handleClick(el)} />
+          </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
