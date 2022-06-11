@@ -1,6 +1,3 @@
-/* eslint-disable-next-line */
-// import '../styles/globals.css';
-
 const classes = {
   md: ' p-2 ',
   xl: ' pl-8 pr-8 pt-4 pb-4 ',
@@ -35,7 +32,8 @@ export const Button = (props: ButtonProps) => {
   const cn = prev + custom + props.addition;
 
   return (
-    <button onClick={props.fn} className={cn}>
+    // <button onClick={props.fn} className={cn}>
+    <button onClick={props.fn} className="p-2 border-2 border-slate-300 transition-all duration-300">
       {props.text}
     </button>
   );
