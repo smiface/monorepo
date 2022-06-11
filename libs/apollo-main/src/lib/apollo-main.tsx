@@ -1,26 +1,15 @@
-import {
-  ApolloClient,
-  ApolloProvider,
-  HttpLink,
-  InMemoryCache,
-} from '@apollo/client';
-import { ApolloA } from './apollo-a';
+import { ApolloProvider } from '@apollo/client';
+import { Todos } from './apollo-todos';
+import { Users } from './apollo-users';
+import { client } from './client';
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'https://magnetic-killdeer-76.hasura.app/v1/graphql',
-  }),
-});
-
-export interface ApolloMainProps {}
-
-export function ApolloMain(props: ApolloMainProps) {
-
+export function ApolloMain() {
   return (
     <ApolloProvider client={client}>
-      <div>sup</div>
-      <ApolloA />
+      <div className="p-2 ">
+        <Users />
+        <Todos />
+      </div>
     </ApolloProvider>
   );
 }

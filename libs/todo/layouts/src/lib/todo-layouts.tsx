@@ -1,6 +1,5 @@
 import { Header } from '@joindev/header';
 import Link from 'next/link';
-
 export const MainLayout = ({children, links}: {children?: React.ReactNode, links: { href: string; str: string }[]}) => {
   const CLinks = links || [];
 
