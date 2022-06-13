@@ -5,12 +5,10 @@ import { client } from './client';
 
 export function ApolloMain() {
   return (
-    <ApolloProvider client={client}>
       <div className="p-2 ">
         <Users />
         <Todos />
       </div>
-    </ApolloProvider>
   );
 }
 
