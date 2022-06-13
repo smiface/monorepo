@@ -7,16 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Roles {
+  id    String @id @default(cuid())
+  title String
+  User  User[]
+}
+
 model User {
-  id    String  @id @default(cuid())
-  email String  @unique
-  name  String?
-  todos Todo[]
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String?
+  todos    Todo[]
+  userRole String
+  role     Roles?  @relation(fields: [userRole], references: [id])
 }
 
 model Todo {
   id       Int      @id @default(autoincrement())
   done     Boolean? @default(false)
+  title    String
   authorId String
   author   User?    @relation(fields: [authorId], references: [id])
 }
