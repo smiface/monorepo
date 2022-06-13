@@ -5,7 +5,7 @@ import { client } from './client';
 
 export function ApolloMain() {
   return (
-      <div className="p-2 ">
+      <div className="">
         <Users />
         <Todos />
       </div>
