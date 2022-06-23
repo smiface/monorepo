@@ -1,8 +1,5 @@
-import { useGetUsers } from './hooks/useGetUsers';
-import { UserElement } from './types';
 import useSWR from 'swr';
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function User() {

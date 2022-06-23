@@ -9,6 +9,8 @@
     "header": "libs/header",
     "nav-link": "libs/nav-link",
     "rent": "apps/rent",
+    "storybook": "apps/storybook",
+    "storybook-aside": "libs/storybook-aside",
     "todo": "apps/todo",
     "todo--hooks": "libs/todo/hooks",
     "todo-components": "libs/todo/components",

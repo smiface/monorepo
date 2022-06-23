@@ -1,19 +1,19 @@
-import { MainLayout } from '@joindev/todo/layouts';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import './styles.css';
 import '../styles/globals.css';
+import { MainLayout } from '@joindev/todo/layouts';
 
 const links = [
   { href: '/', str: 'home' },
-  { href: '/users/', str: 'users' },
-  { href: '/todos/', str: 'todos' },
+  { href: '/testpage', str: 'testpage' },
 ];
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Joindev apollo</title>
+        <title>Monorepo | storybook</title>
         <link rel="shortcut icon" href="../favicon.ico" />
       </Head>
       <MainLayout links={links}>
@@ -24,3 +24,4 @@ function CustomApp({ Component, pageProps }: AppProps) {
 }
 
 export default CustomApp;
+

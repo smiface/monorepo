@@ -1,5 +1,6 @@
 import { Header } from '@joindev/header';
 import Link from 'next/link';
+
 export const MainLayout = ({
   children,
   links,
@@ -10,12 +11,12 @@ export const MainLayout = ({
   const CLinks = links || [];
 
   return (
-    <div className="flex align-middle flex-col h-screen  relative">
+    <div className="flex align-middle flex-col h-screen relative">
       <Header links={CLinks} />
 
-      <div className="bg-slate-50 min-h-[calc(80%)] mt-12 ">{children}</div>
+      <div className="bg-slate-50 h-screen">{children}</div>
 
-      <footer className=" bg-neutral-900 h-10 flex align-middle absolute bottom-0 w-screen">footer</footer>
+      <footer className=" bg-neutral-900 h-10 flex align-middle w-screen">footer</footer>
     </div>
   );
 };
