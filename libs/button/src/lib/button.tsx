@@ -15,6 +15,7 @@ export interface ButtonProps {
   text: string | number;
   variant?: 'primary' | 'secondary'
 }
+
 const newclasses = {
   'primary' : 'p-2 border-2 border-slate-300 transition-all duration-300 '
 }
@@ -25,9 +26,7 @@ export const Button = (props: ButtonProps) => {
   const s = classes[props.size === 'md' || props.size === 'xl' ? props.size : "md"]
   const c = classes[props.color === 'red' || props.color ===  'green' || props.color ===  'lite' ? props.color : 'green']
 
-  console.log(props.color)
-
-  const prev = 'p-2 border-2 border-slate-300 transition-all duration-300 ';
+  const prev = 'p-2 border-2 border-slate-300 transition-all duration-300';
   const custom = s + c;
   const cn = prev + custom + props.addition;
 
