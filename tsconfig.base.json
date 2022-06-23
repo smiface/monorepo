@@ -21,6 +21,7 @@
       "@joindev/hooks": ["libs/hooks/src/index.ts"],
       "@joindev/nav-link": ["libs/nav-link/src/index.ts"],
       "@joindev/storybook-aside": ["libs/storybook-aside/src/index.ts"],
+      "@joindev/storybook-components": ["libs/storybook-components/src/index.ts"],
       "@joindev/todo//hooks": ["libs/todo/hooks/src/index.ts"],
       "@joindev/todo/components": ["libs/todo/components/src/index.ts"],
       "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"],

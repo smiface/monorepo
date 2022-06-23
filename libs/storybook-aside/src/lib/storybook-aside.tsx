@@ -2,7 +2,9 @@ import { Button } from '@joindev/button';
 import { useState } from 'react';
 
 /* eslint-disable-next-line */
-export interface StorybookAsideProps {}
+export interface StorybookAsideProps {
+
+}
 
 const useCustomSelector = (array: string[]) => {
   const [isShow, setIsShow] = useState(false);
@@ -19,7 +21,7 @@ const useCustomSelector = (array: string[]) => {
   return { isShow, setIsShow, handleOpen, handleSelect, current, setCurrent };
 };
 
-export function StorybookAside(props: StorybookAsideProps) {
+export function StorybookAside({array}: {array: string[]}) {
   const testArray = ['zzz', 'xxx', 'ccc'];
   const s = useCustomSelector(testArray);
 
