@@ -8,7 +8,7 @@ export interface CustomSelectorProps {
 }
 
 const useCustomSelector = (array: string[]) => {
-  const [isShow, setIsShow] = useState(false);
+  const [isShow, setIsShow] = useState(true);
   const [current, setCurrent] = useState(array[0]);
   const [opacity, setOpacity] = useState(0);
 
@@ -28,7 +28,7 @@ const useCustomSelector = (array: string[]) => {
 
   const handleSelect = (index: number) => {
     setCurrent(array[index]);
-    toggleOpen()
+    toggleOpen();
   };
 
   return { isShow, toggleOpen, handleSelect, current, opacity };
@@ -38,8 +38,8 @@ export function CustomSelector({ array }: CustomSelectorProps) {
   const s = useCustomSelector(array);
 
   useEffect(() => {
-    console.log(s.isShow);
-  }, [s.isShow]);
+    console.log(s.opacity);
+  }, []);
 
   return (
     <div className="flex flex-col p-2 m-2">
@@ -48,12 +48,13 @@ export function CustomSelector({ array }: CustomSelectorProps) {
         <Button text={s.current} fn={() => s.toggleOpen()} />
 
         {s.isShow ? (
-          <div className="flex flex-col absolute top-0 w-full mt-10 ">
+          <div className="flex flex-col absolute top-0 w-full mt-10">
             {array.map((el, index) => (
               <Button
+                key={el.toString() + index}
                 text={el}
                 fn={() => s.handleSelect(index)}
-                addition={` bg-slate-100 mt-2 w-full opacity-${s.opacity} duration-300 z-10`}
+                addition={' bg-slate-100 mt-2 w-full  duration-300 z-10' + ` opacity-${s.opacity}`}
               />
             ))}
           </div>

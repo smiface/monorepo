@@ -9,6 +9,7 @@ export function StorybookComponents(props: StorybookComponentsProps) {
     <div>
       <h1>Welcome to StorybookComponents!</h1>
       <CustomSelector array={['zzz', 'xxx', 'ccc']} animated={true} />
+      
       <CustomFaq title="title">
         <h3>123</h3>
         <p>text</p>

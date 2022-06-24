@@ -27,22 +27,7 @@ export function StorybookAside({array}: {array: string[]}) {
 
   return (
     <div className="flex flex-col p-2 m-2">
-      <h2>  </h2>
-      <div className="flex flex-col relative">
-        <Button text={s.current} fn={() => s.handleOpen()}  />
-
-        {s.isShow ? (
-          <div className="flex flex-col absolute top-0 w-full mt-10 border-2 border-red-300">
-            {testArray.map((el, index) => (
-              <Button text={el} fn={() => s.handleSelect(index)} addition={' bg-slate-100 mt-2 w-full '} />
-            ))}
-          </div>
-        ) : (
-          false
-        )}
-      </div>
-
-      <p>another content </p>
+      zxc
     </div>
   );
 }

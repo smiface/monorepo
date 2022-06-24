@@ -14,7 +14,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Monorepo | storybook</title>
-        <link rel="shortcut icon" href="../favicon.ico" />
+        <link rel="shortcut icon" href="favicon.ico" />
       </Head>
       <MainLayout links={links}>
         <Component {...pageProps} />
