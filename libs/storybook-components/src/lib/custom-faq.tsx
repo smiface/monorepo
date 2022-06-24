@@ -9,66 +9,78 @@ export interface CustomFaqProps {
 }
 
 const useCustomFaq = () => {
+  const pre = 'flex flex-col justify-center w-full border-2 border-pink-900 p-2 bg-gray-200 duration-300';
+
   const [isShow, setIsShow] = useState(false);
-  const [opacity, setOpacity] = useState(0);
-  const [height, setHeight] = useState(24);
+  const [opacity, setOpacity] = useState(' opacity-0');
+  const [height, setHeight] = useState(' h-1');
+  const [str, setStr] = useState(pre + 'h-1 opacity-0');
 
   const handleOpen = () => {
     if (isShow) {
-      setOpacity(0);
+      setStr(pre + ' h-full opacity-0');
 
       setTimeout(() => {
-        setHeight(1);
-      }, 250);
+        setStr(pre + ' h-1 opacity-0');
+      }, 300);
 
       setTimeout(() => {
         setIsShow(false);
-      }, 350);
+      }, 600);
     } else {
       setIsShow(true);
 
       setTimeout(() => {
-        setHeight(24);
-      }, 50);
+        setStr(pre + '  h-full  opacity-0');
+      }, 300);
 
       setTimeout(() => {
-        setOpacity(1);
+        setStr(pre + '  h-full opacity-1');
+      }, 600);
+    }
+  };
+
+  const handleOpen1 = () => {
+    if (isShow) {
+      setOpacity(' opacity-0');
+
+      setTimeout(() => {
+        setHeight(' h-1');
+      }, 250);
+
+      setTimeout(() => {
+        setIsShow(false);
+      }, 550);
+    } else {
+      setIsShow(true);
+
+      setTimeout(() => {
+        setHeight(' h-full');
+      }, 250);
+
+      setTimeout(() => {
+        setOpacity(' opacity-1');
       }, 300);
     }
   };
 
-  return { isShow, setIsShow, handleOpen, opacity, height };
+  return { isShow, setIsShow, handleOpen, opacity, height, str };
 };
 
 export function CustomFaq({ title, children }: CustomFaqProps) {
-  const s = useCustomFaq();
-  const pre = 'flex flex-col justify-center w-full border-2 border-pink-900 p-2 bg-gray-200 duration-300';
-  const [h, setH] = useState(1);
+  const hook = useCustomFaq();
 
+  useEffect(() => {
+    console.log(hook.opacity, hook.height);
+  }, [hook]);
 
   return (
     <div className="flex flex-col p-2 m-2">
       <h2> Custom faq </h2>
 
-      <button onClick={() => (h == 1 ? setH(10) : setH(1))}>zxc</button>
-
       <div className="flex flex-col relative">
-        <Button text={title} fn={() => s.handleOpen()} addition=" text-left" />
-
-        {s.isShow ? (
-          <div
-            className={
-              `flex flex-col justify-center w-full border-2 border-pink-900 p-2 bg-gray-200 duration-300 ` +
-              `h-${s.height}`
-            }
-          >
-            <div className={clsx('border-2 border-red-500 p-2 text-left duration-300', ` opacity-${s.opacity}`)}>
-              {children}
-            </div>
-          </div>
-        ) : (
-          false
-        )}
+        <Button text={title} fn={() => hook.handleOpen()} addition=" text-left" />
+        {hook.isShow ? <div className={hook.str + ' h-12'}>{children}</div> : false}
       </div>
 
       <p>another content </p>

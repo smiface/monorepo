@@ -8,7 +8,7 @@ export interface CustomSelectorProps {
 }
 
 const useCustomSelector = (array: string[]) => {
-  const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState(false);
   const [current, setCurrent] = useState(array[0]);
   const [opacity, setOpacity] = useState(0);
 
@@ -37,9 +37,6 @@ const useCustomSelector = (array: string[]) => {
 export function CustomSelector({ array }: CustomSelectorProps) {
   const s = useCustomSelector(array);
 
-  useEffect(() => {
-    console.log(s.opacity);
-  }, []);
 
   return (
     <div className="flex flex-col p-2 m-2">
