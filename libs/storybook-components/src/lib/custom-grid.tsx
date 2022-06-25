@@ -1,54 +1,38 @@
 import { Button } from '@joindev/button';
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
 function getArrayWithLength(length: number) {
   return Array(length).fill(0);
 }
 
+const updClass = (elements, poses, idx, isPre) => {
+  const cl = 'p-2 border-2  m-4 border-green-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger';
+  const addition = (idx) => ' absolute top-[' + Math.floor(poses[idx].y) + 'px] left-[' + Math.floor(poses[idx].x) + 'px] zxc';
+  elements[idx].className = clsx(cl, addition);
+};
+
 export const CustomGrid = () => {
   const [arr, setArr] = useState(getArrayWithLength(40));
   const [isPreloaded, setIsPreloaded] = useState(true);
 
   useEffect(() => {
-    console.log(isPreloaded);
-    if (isPreloaded === true) {
-      setIsPreloaded(false);
-      let elements = document.querySelectorAll('.trigger');
+    setTimeout(() => {
+      let elements = document.querySelectorAll('.move-trigger');
       let poses = [...elements].map((i) => i.getBoundingClientRect());
-
-      setTimeout(() => {
-        elements.forEach((el, idx) => {
-          // el.className = elements[idx].className + ` m-0 absolute top-[${poses[idx].x}px] left-[${poses[idx].y}px]`;
-        });
-      }, 500);
-    }
-  }, [isPreloaded]);
+      elements.forEach((item, idx) => updClass(elements, poses, idx));
+    }, 500);
+  }, []);
 
   const animetedRemove = (idx: number) => {
-    const elements = document.querySelectorAll('.trigger');
+    const elements = document.querySelectorAll('.move-trigger');
     const poses = [...elements].map((i) => i.getBoundingClientRect());
+    console.log(poses[idx].x, poses[idx].y);
 
-    const newClass = (idx) => {
-      let a = elements[idx].className;
-      let b = `   absolute top-[`;
-      let c = String(poses[idx - 1].y).split('.')[0];
-      let d = `px] left-[`;
-      let e = String(poses[idx - 1].x).split('.')[0];
-      let f = `px]`;
-      let g = a + b + c + d + e + f;
-      console.log(g)
-      return g;
-    };
-
-    elements[idx].className = newClass(idx);
-
-    // elements[idx].className = elements[idx].className + ` m-0 absolute top-[${poses[idx].x}px] left-[${poses[idx].y}px] `
-    // elements[idx].className = elements[idx].className + ` absolute top-[${poses[idx].x}px] left-[${poses[idx].y}px]`;
-
-
-    setTimeout(() => {
-      //   setArr(arr.filter((el, index) => index !== idx));
-    }, 300);
+    const cl = `p-2 border-2  m-4 border-blue-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger  absolute top-[${Math.floor(
+      poses[idx - 1].y
+    )}px] left-[${Math.floor(poses[idx - 1].x)}px] zxc`;
+    elements[idx].className = cl;
   };
 
   return (
@@ -58,7 +42,7 @@ export const CustomGrid = () => {
           key={el + ' ' + idx + ' '}
           text={'close ' + idx}
           fn={() => animetedRemove(idx)}
-          addition="duration-300 w-[100px] m-4 trigger"
+          addition="duration-300 w-[100px] m-4 move-trigger"
         />
       ))}
     </div>
