@@ -1,19 +1,22 @@
 import { CustomFaq } from './custom-faq';
+import { CustomModal } from './custom-modal';
 import { CustomSelector } from './custom-selector';
 
-/* eslint-disable-next-line */
-export interface StorybookComponentsProps {}
-
-export function StorybookComponents(props: StorybookComponentsProps) {
+export function StorybookComponents() {
   return (
     <div>
       <h1>Welcome to StorybookComponents!</h1>
-      <CustomSelector array={['zzz', 'xxx', 'ccc']} animated={true} />
-      
-      <CustomFaq title="title">
-        <h3>123</h3>
-        <p>text</p>
+
+      <CustomFaq title={'Title Faq'}>
+        <h3 className="text-2xl">H3 Title {}</h3>
+        <p>
+          Text <span>spanned</span> in my FAQ #{}
+        </p>
       </CustomFaq>
+
+      <CustomSelector array={['zzz', 'xxx', 'ccc']} animated={true} />
+
+      <CustomModal />
     </div>
   );
 }
