@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react';
 /* eslint-disable-next-line */
 export interface CustomSelectorProps {
   array: string[];
-  animated?: boolean;
+  duration?: number;
 }
 
-const useCustomSelector = (array: string[]) => {
+const useCustomSelector = (array: string[], duration: number) => {
   const [isShow, setIsShow] = useState(false);
   const [current, setCurrent] = useState(array[0]);
   const [opacity, setOpacity] = useState(0);
@@ -18,12 +18,12 @@ const useCustomSelector = (array: string[]) => {
       setOpacity(0);
       setTimeout(() => {
         setIsShow(false);
-      }, 300);
+      }, duration);
     } else {
       setIsShow(true);
       setTimeout(() => {
         setOpacity(1);
-      }, 300);
+      }, 0);
     }
   };
 
@@ -35,24 +35,28 @@ const useCustomSelector = (array: string[]) => {
   return { isShow, toggleOpen, handleSelect, current, opacity };
 };
 
-export function CustomSelector({ array }: CustomSelectorProps) {
-  const s = useCustomSelector(array);
+export function CustomSelector({ array, duration = 0 }: CustomSelectorProps) {
+  const s = useCustomSelector(array, duration);
 
   return (
     <div className="flex flex-col p-2 m-2">
-      <h2> Custom selector </h2>
       <div className="flex flex-col relative">
-        <Button text={s.current} fn={() => s.toggleOpen()} color='lite' />
+        <Button text={s.current} fn={() => s.toggleOpen()} color="lite" />
 
         {s.isShow ? (
           <div className="flex flex-col absolute top-0 w-full mt-10">
             {array.map((el, index) => (
               <Button
                 key={el.toString() + index}
-                color='lite'
+                color="lite"
                 text={el}
                 fn={() => s.handleSelect(index)}
-                addition={clsx('bg-slate-100 w-full duration-300 z-30', ` opacity-${s.opacity}`, index > 0 ? ' mt-2 ' : ' mt-3 ')}
+                addition={clsx(
+                  'bg-slate-100 w-full z-30',
+                  ` opacity-${s.opacity}`,
+                  index > 0 ? ' mt-2 ' : ' mt-3 ',
+                  `duration-${duration}`
+                )}
               />
             ))}
           </div>

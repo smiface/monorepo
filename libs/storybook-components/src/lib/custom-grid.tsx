@@ -14,15 +14,29 @@ const updClass = (elements, poses, idx, isPre) => {
 
 export const CustomGrid = () => {
   const [arr, setArr] = useState(getArrayWithLength(40));
-  const [isPreloaded, setIsPreloaded] = useState(true);
+  const [matrix, setMatrix] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      let elements = document.querySelectorAll('.move-trigger');
-      let poses = [...elements].map((i) => i.getBoundingClientRect());
-      elements.forEach((item, idx) => updClass(elements, poses, idx));
-    }, 500);
+    let elements = document.querySelectorAll('.move-trigger');
+    let poses = [...elements].map((i) => i.getBoundingClientRect());
+    const array = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
+    setMatrix(array);
+    // elements.forEach((item, idx) => updClass(elements, poses, idx));
   }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll('.move-trigger');
+    if (matrix.length) {
+      const pre = `p-2 border-2  border-blue-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger
+      absolute`;
+      const cl = (idx: number) => `top-[${matrix[idx].y}px] left-[${matrix[idx].x}px] zxc`;
+
+      setTimeout(() => {
+        elements[1].className = clsx(pre, cl(3));
+        console.log(elements[1].className);
+      }, 500);
+    }
+  }, [matrix]);
 
   const animetedRemove = (idx: number) => {
     const elements = document.querySelectorAll('.move-trigger');

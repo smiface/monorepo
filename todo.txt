@@ -1,2 +1,0 @@
-modal.tsx 12 line
-mode: 'jit', ?? class="w-[calc(100%+2rem)]"
