@@ -7,6 +7,8 @@ import { MainLayout } from '@joindev/todo/layouts';
 const links = [
   { href: '/', str: 'home' },
   { href: '/testpage', str: 'testpage' },
+  { href: '//navigateAnimation', str: 'navigateAnimation' },
+  
 ];
 
 function CustomApp({ Component, pageProps }: AppProps) {
