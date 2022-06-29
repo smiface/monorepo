@@ -26,7 +26,7 @@ const useCustomHook = () => {
       setIsShow(false);
     }, 600);
   };
-
+// zxc
   const toggleShow = () => (isShow ? Close() : Open());
 
   return { toggleShow, isShow, modalStr };
