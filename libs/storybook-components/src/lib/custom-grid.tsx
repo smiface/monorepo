@@ -170,9 +170,45 @@ let array = [
   },
 ];
 
+const useHelper = () => {
+  let elements =  document.querySelectorAll('.move-trigger')
+  let poses = [...elements].map((i) => i.getBoundingClientRect());
+  let posesXY = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
+
+  const getElements = () => elements;
+  const getPoses = () => [...getElements()].map((i) => i.getBoundingClientRect());
+  const getPosesXY =() => [...getPoses()].map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
+
+  return { getElements , getPoses, getPosesXY};
+};
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+  });
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return windowSize;
+}
+
 export const CustomGrid = () => {
   const [arr, setArr] = useState(array);
   const [matrix, setMatrix] = useState([]);
+  const w = useWindowSize();
+  const { getElements , getPoses, getPosesXY} = useHelper(document);
+
+  // useeffect console.log when window width changes
+  useEffect(() => {}, [w.width]);
 
   const hideByIdx = (elements, idx, id) => {
     elements[idx].style.position = 'absolute';
@@ -192,19 +228,59 @@ export const CustomGrid = () => {
   };
 
   const reCalculate = (id = false) => {
-    let elements = document.querySelectorAll('.move-trigger');
-    let poses = [...elements].map((i) => i.getBoundingClientRect());
-    const array = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
-    setMatrix(array);
+    // let elements = document.querySelectorAll('.move-trigger');
+    // let poses = [...elements].map((i) => i.getBoundingClientRect());
+    // const array = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
+    setMatrix(getPosesXY());
     if (id) {
       const newArr = arr.filter((el) => el.id !== id);
       setArr(newArr);
     }
+
+    setTimeout(() => {
+      setDisable(false);
+    }, 500);
+  };
+
+  const setDisable = (isDiabled: boolean) => {
+    let elements = document.querySelectorAll('.move-trigger');
+    elements.forEach((item, idx) => {
+      if (idx > 0) {
+        item.disabled = isDiabled;
+      }
+    });
+  };
+
+  const moveAnother = (id, idx) => {
+    setTimeout(() => {
+      let elements = document.querySelectorAll('.move-trigger');
+      let parentPos = document.querySelector('.move-trigger-parent').getBoundingClientRect();
+      let offset = { x: parentPos.x, y: parentPos.y };
+
+      elements.forEach((item, idx) => {
+        if (matrix[idx] !== undefined && idx > 0) {
+          moveToPrePos(elements, offset, idx);
+        }
+      });
+
+      elements.forEach((el, index) => {
+        if (index + 1 > id) {
+          elements[idx].style.top = matrix[idx].y - offset.y + 'px';
+          elements[idx].style.left = matrix[idx].x - offset.x + 'px';
+        }
+      });
+
+      setTimeout(() => {
+        reCalculate();
+      }, 300);
+    }, 300);
   };
 
   useEffect(() => {
     reCalculate();
   }, []);
+
+  const useHook = () => {};
 
   useEffect(() => {
     let elements = document.querySelectorAll('.move-trigger');
@@ -218,45 +294,16 @@ export const CustomGrid = () => {
     });
   }, [matrix]);
 
-  const bar = () => {
-    const checkItem = localStorage.getItem('bar') ? localStorage.getItem('bar') : false;
-    const checkParse = checkItem ? JSON.parse(checkItem) : false;
-    const checkArray = Array.isArray(checkParse) ? checkParse : false;
-    const checkLengthArray = checkArray.length > 0 ? checkArray : false;
-
-    const checkEveryKeys =
-      checkLengthArray && checkLengthArray.map((el) => Object.keys(el) == ['id', 'color']).find((i) => i == false)
-        ? checkLengthArray
-        : false;
-
-    const checkEveryValues =
-      checkEveryKeys && checkLengthArray.map((el) => Object.values(el).map((i) => typeof i) == ['number', 'string']).find((i) => i == false)
-        ? checkEveryKeys
-        : false;
-
-    const value = checkEveryValues ? checkEveryValues : [];
-    return value;
-  };
-
   const animatedRemove = (idx: number, id: number) => {
     let elements = document.querySelectorAll('.move-trigger');
     let parentPos = document.querySelector('.move-trigger-parent').getBoundingClientRect();
     let offset = { x: parentPos.x, y: parentPos.y };
 
+    setDisable(true);
+
     if (elements[idx]) {
       hideByIdx(elements, idx, id);
-
-      setTimeout(() => {
-        setTimeout(() => {
-          elements.forEach((el, index) => {
-            if (index + 1 > id) {
-              console.log(index + 1 > id);
-              elements[idx + 1].style.top = matrix[idx].y - offset.y + 'px';
-              elements[idx + 1].style.left = matrix[idx].x - offset.x + 'px';
-            }
-          });
-        }, 300);
-      }, 100);
+      moveAnother(id, idx);
     }
   };
 
