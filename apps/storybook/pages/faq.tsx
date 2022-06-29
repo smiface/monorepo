@@ -24,7 +24,7 @@ export default function FaqPage() {
           </div>
 
           <div className="w-[300px] h-[300px]">
-            <CustomFaq title="disabled" animateDuration={300} isDisabled={true}>
+            <CustomFaq title="disabled ✕" animateDuration={300} isDisabled={true}>
               <h3 className="text-4xl pt-4 pb-2">Title 4xl</h3>
               <p className="text-xl pt-4 pb-2">Text xl</p>
             </CustomFaq>

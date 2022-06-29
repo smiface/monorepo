@@ -31,7 +31,7 @@ function StorybookAside({ array = links, isAnimated = false, canBeTiny = false }
   const hook = useCustomHook(array);
 
   return (
-    <div className="w-[300px] border-2 border-red-100 h-[100%] overflow-y-scroll  overflow-x-hidden flex flex-col">
+    <div className="w-[300px] h-[100%] overflow-y-scroll  overflow-x-hidden flex flex-col">
       {array.map((el) => (
         <Button text={el.title} fn={() => router.push('/' + el.path)} key={el.toString()} addition="border-0 bg-white p-4" color="lite" />
       ))}
