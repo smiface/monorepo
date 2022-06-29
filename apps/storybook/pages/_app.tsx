@@ -11,6 +11,8 @@ const links = [
   
 ];
 
+// forceupd
+
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
