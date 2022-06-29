@@ -5,7 +5,7 @@ export default function GridPage() {
   return (
     <div className=" bg-gray-100 h-[100%] flex">
       <StorybookAside />
-      <div className="w-[100%]">
+      <div className="w-[100%] p-4">
         <CustomGrid />
       </div>
     </div>
