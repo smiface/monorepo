@@ -1,4 +1,4 @@
-export const array = [
+export const links = [
     { title: 'home', path: '' },
     { title: 'selector', path: '/selector' },
     { title: 'modal', path: '/modal' },
