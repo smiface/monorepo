@@ -32,7 +32,6 @@ const useCustomHook = () => {
   return { toggleShow, isShow, modalStr };
 };
 
-// 
 export const CustomModal = () => {
   const hook = useCustomHook();
   return (
