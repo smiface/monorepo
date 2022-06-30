@@ -26,17 +26,22 @@ const useCustomHook = () => {
       setIsShow(false);
     }, 600);
   };
-
+  // zxc
   const toggleShow = () => (isShow ? Close() : Open());
 
   return { toggleShow, isShow, modalStr };
 };
 
-export const CustomModal = () => {
+interface CustomModalProps {
+  openStr?: string;
+  closeStr?: string;
+}
+
+export const CustomModal = ({ openStr  = 'Open Modal', closeStr   = 'Close Modal'}: CustomModalProps) => {
   const hook = useCustomHook();
   return (
     <div>
-      <Button text="Open modal" fn={hook.toggleShow} addition="ml-4" color="lite" />
+      <Button text={openStr} fn={hook.toggleShow} color="lite" />
 
       {hook.isShow ? (
         <div className={hook.modalStr}>
@@ -44,7 +49,7 @@ export const CustomModal = () => {
           <div className="absolute  bg-gray-400 h-full w-full opacity-50" onClick={hook.toggleShow}></div>
 
           <div className="z-10">
-            <Button text="Close modal" fn={hook.toggleShow} addition=" w-max rounded-sm" color="lite" />
+            <Button text={closeStr} fn={hook.toggleShow} addition=" w-max rounded-sm" color="lite" />
           </div>
         </div>
       ) : (

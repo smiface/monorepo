@@ -1,64 +1,160 @@
 import { Button } from '@joindev/button';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
+import { array } from './custom-grid-array';
 
-function getArrayWithLength(length: number) {
-  return Array(length).fill(0);
-}
+const helper = () => {
+  const elements = document.querySelectorAll('.move-trigger');
+  const poses = [...Array.from(elements)]
+    .map((i) => i.getBoundingClientRect())
+    .map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
 
-const updClass = (elements, poses, idx, isPre) => {
-  const cl = 'p-2 border-2  m-4 border-green-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger';
-  const addition = (idx) => ' absolute top-[' + Math.floor(poses[idx].y) + 'px] left-[' + Math.floor(poses[idx].x) + 'px] zxc';
-  elements[idx].className = clsx(cl, addition);
+  return { elements, poses, posesXY };
 };
 
+function useWindowSize() {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return width;
+}
+
 export const CustomGrid = () => {
-  const [arr, setArr] = useState(getArrayWithLength(40));
+  const [arr, setArr] = useState(array);
   const [matrix, setMatrix] = useState([]);
+  const w = useWindowSize();
+  // const { getElements, getPoses, getPosesXY } = useHelper(document);
+
+  // useeffect console.log when window width changes
+  useEffect(() => {
+    console.log(w);
+  }, [w]);
+
+  const hideByIdx = (elements, idx, id) => {
+    elements[idx].style.position = 'absolute';
+    elements[idx].style.transition = '.3s';
+    elements[idx].style.opacity = '0';
+
+    setTimeout(() => {
+      elements[idx].remove();
+      reCalculate(id);
+    }, 300);
+  };
+
+  const moveToPrePos = (elements: HTMLElement[], offset: { x: number; y: number }, idx: number) => {
+    elements[idx].style.position = 'absolute';
+    elements[idx].style.top = matrix[idx].y - offset.y + 'px';
+    elements[idx].style.left = matrix[idx].x - offset.x + 'px';
+  };
+
+  const reCalculate = (id = false) => {
+    const elements = document.querySelectorAll('.move-trigger');
+    const poses = [...elements].map((i) => i.getBoundingClientRect());
+    const getPosesXY = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
+    setMatrix(helper().posesXY);
+    if (id) {
+      const newArr = arr.filter((el) => el.id !== id);
+      setArr(newArr);
+    }
+
+    setTimeout(() => {
+      setDisable(false);
+    }, 500);
+  };
+
+  const setDisable = (isDiabled: boolean) => {
+    let elements = document.querySelectorAll('.move-trigger');
+    elements.forEach((item, idx) => {
+      if (idx > 0) {
+        item.disabled = isDiabled;
+      }
+    });
+  };
+
+  const moveAnother = (id, idx) => {
+    setTimeout(() => {
+      let elements = document.querySelectorAll('.move-trigger');
+      let parentPos = document.querySelector('.move-trigger-parent').getBoundingClientRect();
+      let offset = { x: parentPos.x, y: parentPos.y };
+
+      elements.forEach((item, idx) => {
+        if (matrix[idx] !== undefined && idx > 0) {
+          moveToPrePos(elements, offset, idx);
+        }
+      });
+
+      elements.forEach((el, index) => {
+        if (index + 1 > id) {
+          elements[idx].style.top = matrix[idx].y - offset.y + 'px';
+          elements[idx].style.left = matrix[idx].x - offset.x + 'px';
+        }
+      });
+
+      setTimeout(() => {
+        reCalculate();
+      }, 300);
+    }, 300);
+  };
+
+  useEffect(() => {
+    reCalculate();
+  }, []);
+
+  const useHook = () => {};
 
   useEffect(() => {
     let elements = document.querySelectorAll('.move-trigger');
-    let poses = [...elements].map((i) => i.getBoundingClientRect());
-    const array = poses.map((el) => (el = { x: Math.floor(el.x), y: Math.floor(el.y) }));
-    setMatrix(array);
-    // elements.forEach((item, idx) => updClass(elements, poses, idx));
-  }, []);
+    let parentPos = document.querySelector('.move-trigger-parent').getBoundingClientRect();
+    let offset = { x: parentPos.x, y: parentPos.y };
 
-  useEffect(() => {
-    const elements = document.querySelectorAll('.move-trigger');
-    if (matrix.length) {
-      const pre = `p-2 border-2  border-blue-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger
-      absolute`;
-      const cl = (idx: number) => `top-[${matrix[idx].y}px] left-[${matrix[idx].x}px] zxc`;
-
-      setTimeout(() => {
-        elements[1].className = clsx(pre, cl(3));
-        console.log(elements[1].className);
-      }, 500);
-    }
+    elements.forEach((item, idx) => {
+      if (matrix[idx] !== undefined && idx > 0) {
+        moveToPrePos(elements, offset, idx);
+      }
+    });
   }, [matrix]);
 
-  const animetedRemove = (idx: number) => {
-    const elements = document.querySelectorAll('.move-trigger');
-    const poses = [...elements].map((i) => i.getBoundingClientRect());
-    console.log(poses[idx].x, poses[idx].y);
+  const animatedRemove = (idx: number, id: number) => {
+    let elements = document.querySelectorAll('.move-trigger');
+    let parentPos = document.querySelector('.move-trigger-parent').getBoundingClientRect();
+    let offset = { x: parentPos.x, y: parentPos.y };
 
-    const cl = `p-2 border-2  m-4 border-blue-900 transition-all bg-green-100 hover:bg-green-200 duration-300 w-[100px] move-trigger  absolute top-[${Math.floor(
-      poses[idx - 1].y
-    )}px] left-[${Math.floor(poses[idx - 1].x)}px] zxc`;
-    elements[idx].className = cl;
+    setDisable(true);
+
+    if (elements[idx]) {
+      hideByIdx(elements, idx, id);
+      moveAnother(id, idx);
+    }
   };
 
   return (
-    <div className="grid grid-cols-6">
-      {arr.map((el, idx) => (
-        <Button
-          key={el + ' ' + idx + ' '}
-          text={'close ' + idx}
-          fn={() => animetedRemove(idx)}
-          addition="duration-300 w-[100px] m-4 move-trigger"
-        />
+    <div className="move-trigger-parent grid grid-cols-6 gap-6 relative">
+      {array.map((el, idx) => (
+        <button
+          key={el.id}
+          className="move-trigger w-[150px] m-0 border-2 border-pink-700 duration-300 "
+          onClick={() => animatedRemove(idx, el.id)}
+        >
+          {el.str}
+        </button>
       ))}
+
+
+{/* create pink button increment */}
+      <button
+        className="move-trigger w-[150px] m-0 border-2 border-pink-700 duration-300 "
+        onClick={() => {
+
+      <div className="absolute left-[90%] top-[80vh]">{arr.length}</div>
     </div>
   );
 };

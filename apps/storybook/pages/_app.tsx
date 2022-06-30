@@ -5,11 +5,13 @@ import '../styles/globals.css';
 import { MainLayout } from '@joindev/todo/layouts';
 
 const links = [
-  { href: '/', str: 'home' },
+  { href: '', str: 'home' },
   { href: '/testpage', str: 'testpage' },
   { href: '//navigateAnimation', str: 'navigateAnimation' },
   
 ];
+
+// forceupd
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
