@@ -56,6 +56,21 @@ const CopilotCompoent = () => {
 
   return (
     <div>
+
+{/* create modal component */}
+      <div className="bg-gray-100 h-[100%] flex">
+        <Content />
+        {/* create button to close modal */}
+        <button onClick={() => s.modal. ()}>Close</button>
+
+      </div>
+
+{/* create button to open modal */}
+      <div className="flex flex-col">
+        <XButton text="Open Modal" fn={() => s.modal. ()} />
+      </div>
+
+
       {/* header with logout pink button */}
       <div className="flex justify-between">
         <div className="flex">

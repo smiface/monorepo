@@ -20,10 +20,7 @@ const useCustomHook = (array: string[]) => {
     setIsShow(!isShow);
   };
 
-  const handleClick = (str: string) => {
-    router.push('/' + str);
-  };
-  return { isShow, setIsShow, handleOpen, handleClick };
+  return { isShow, setIsShow, handleOpen };
 };
 
 function StorybookAside({ array = links, isAnimated = false, canBeTiny = false }: StorybookAsideProps) {
@@ -33,7 +30,7 @@ function StorybookAside({ array = links, isAnimated = false, canBeTiny = false }
   return (
     <div className="w-[300px] h-[100%] overflow-y-scroll  overflow-x-hidden flex flex-col">
       {array.map((el) => (
-        <Button text={el.title} fn={() => router.push('/' + el.path)} key={el.toString()} addition="border-0 bg-white p-4" color="lite" />
+        <Button text={el.title} fn={() => router.push('/' + el.path)} key={el.title} addition="border-0 bg-white p-4" color="lite" />
       ))}
     </div>
   );

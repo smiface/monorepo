@@ -1,6 +1,3 @@
-// create mobx store with counter only
-// import { observable, action } from 'mobx';
-
 import { makeAutoObservable } from 'mobx';
 
 // create class Counter makeAutoObservable
@@ -17,9 +14,7 @@ class Counter {
   };
 }
 
-// create class Counter makeAutoObservable
-
-// create class Todos makeAutoObservable
+// create class todos makeAutoObservable
 class Todos {
   constructor() {
     makeAutoObservable(this);
@@ -33,7 +28,7 @@ class Todos {
   };
 }
 
-// class auth makeAutoObservable
+// create auth store makeAutoObservable
 class Auth {
   constructor() {
     makeAutoObservable(this);
@@ -58,21 +53,7 @@ class Auth {
   };
 }
 
-// create store modal makeAutoObservable
-class Modal {
-  constructor() {
-    makeAutoObservable(this);
-  }
-  isOpen = false;
-  closeModal = () => {
-    this.isOpen = true;
-  };
-  openModal = () => {
-    this.isOpen = false;
-  };
-}
-
-// create RootStore makeAutoObservable
+// create rootstore makeAutoObservable
 class RootStore {
   constructor() {
     makeAutoObservable(this);
@@ -80,9 +61,4 @@ class RootStore {
   counter = new Counter();
   todos = new Todos();
   auth = new Auth();
-  modal = new Modal();
 }
-
-const store = new RootStore();
-
-export default store;

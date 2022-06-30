@@ -4,7 +4,7 @@ import Head from 'next/head';
 import '../styles/globals.css';
 
 const links = [
-  { href: '/', str: 'home' },
+  { href: '', str: 'home' },
   { href: '/users/', str: 'users' },
   { href: '/todos/', str: 'todos' },
 ];
