@@ -1,5 +1,7 @@
 import StorybookAside from 'libs/storybook-aside/src/lib/storybook-aside';
 import { CustomModal } from 'libs/storybook-components/src/lib/custom-modal';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function ModalPage() {
   return (

@@ -11,8 +11,6 @@ const links = [
   { href: '/navigateAnimation', str: 'navigateAnimation' },
 ];
 
-// test
-
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>

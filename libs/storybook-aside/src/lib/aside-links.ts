@@ -4,4 +4,5 @@ export const array = [
     { title: 'modal', path: '/modal' },
     { title: 'faq', path: '/faq' },
     { title: 'grid', path: '/grid' },
+    { title: 'Infinity Scroll', path: '/infinityScroll' },
   ];
