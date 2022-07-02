@@ -27,7 +27,8 @@
       "@joindev/todo/layouts": ["libs/todo/layouts/src/index.ts"],
       "@joindev/todo/store": ["libs/todo/store/src/index.ts"],
       "@joindev/todo/types": ["libs/todo/types/src/index.ts"],
-      "@joindev/types": ["libs/types/src/index.ts"]
+      "@joindev/types": ["libs/types/src/index.ts"],
+      "@joindev/use-window-width": ["libs/use-window-width/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

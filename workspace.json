@@ -18,6 +18,7 @@
     "todo-layouts": "libs/todo/layouts",
     "todo-store": "libs/todo/store",
     "todo-types": "libs/todo/types",
-    "types": "libs/types"
+    "types": "libs/types",
+    "use-window-width": "libs/use-window-width"
   }
 }

@@ -4,7 +4,8 @@ import { useState } from 'react';
 const useCustomHook = () => {
   const [isShow, setIsShow] = useState(false);
 
-  const modalPre = 'fixed z-40 top-0 left-0  h-full w-full duration-300 flex items-center justify-center ';
+  const modalPre =
+    'fixed z-40 top-0 left-0  h-full w-full duration-300 flex items-center justify-center ';
   const modalSlt1 = modalPre + ' opacity-0';
   const modalSlt2 = modalPre + ' opacity-1';
 
@@ -41,10 +42,18 @@ export const CustomModal = () => {
       {hook.isShow ? (
         <div className={hook.modalStr}>
           {/* overlay */}
-          <div className="absolute  bg-gray-400 h-full w-full opacity-50" onClick={hook.toggleShow}></div>
+          <div
+            className="absolute  bg-gray-400 h-full w-full opacity-50"
+            onClick={hook.toggleShow}
+          ></div>
 
           <div className="z-10">
-            <Button text="Close modal" fn={hook.toggleShow} addition=" w-max rounded-sm" color="lite" />
+            <Button
+              text="Close modal"
+              fn={hook.toggleShow}
+              addition=" w-max rounded-sm"
+              color="lite"
+            />
           </div>
         </div>
       ) : (
