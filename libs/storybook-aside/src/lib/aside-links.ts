@@ -5,4 +5,5 @@ export const array = [
     { title: 'faq', path: '/faq' },
     { title: 'grid', path: '/grid' },
     { title: 'Infinity Scroll', path: '/infinityScroll' },
+    { title: 'Ticker', path: '/ticker' },
   ];
