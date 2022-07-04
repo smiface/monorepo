@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+* {
+  font-family: 'Montserrat', sans-serif;
+
+  input {
+    border: 1px rgba(128, 128, 128, 0.374) solid;
+  }
+}
+
+input:nth-child(3), input:nth-child(6) {
+  border-right: 3px black solid ;
+}
+
+
+input:nth-child(3), input:nth-child(6) {
+  border-left: unset;
+}
+
+.flex:nth-child(3), .flex:nth-child(6) {
+  border-bottom: 3px black solid;
+
+  input {
+    border-bottom: unset
+  }
+} 
+
+@tailwind components;
+@tailwind base;
+@tailwind utilities;

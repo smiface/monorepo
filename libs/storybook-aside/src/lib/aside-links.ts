@@ -6,4 +6,5 @@ export const array = [
     { title: 'grid', path: '/grid' },
     { title: 'Infinity Scroll', path: '/infinityScroll' },
     { title: 'Ticker', path: '/ticker' },
+    { title: 'filter blocks', path: '/filterBlocks' },
   ];
