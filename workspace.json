@@ -6,7 +6,7 @@
     "apollo-main": "libs/apollo-main",
     "apollo-nest": "apps/apollo-nest",
     "button": "libs/button",
-    "copilot": "apps/copilot",
+    "copilot-repo": "apps/copilot-repo",
     "header": "libs/header",
     "nav-link": "libs/nav-link",
     "rent": "apps/rent",

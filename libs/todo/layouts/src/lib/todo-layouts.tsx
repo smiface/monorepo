@@ -20,7 +20,3 @@ export const MainLayout = ({
     </div>
   );
 };
-
-// export default MainLayout;
-
-// export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {

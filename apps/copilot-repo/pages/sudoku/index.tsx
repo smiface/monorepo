@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import NxWelcome from './nx-welcome';
-import '../styles/globals.scss';
 import store from './store';
 import { observer } from 'mobx-react-lite';
 import { getPuzzle } from './getPuzzle';
 
-// input number component react
 interface SudokuInputProps {
   value?: number;
   fn?: (value: any) => void;
@@ -38,8 +36,7 @@ const SudokuRow = observer(({ array, x }: { array: any; x: number }) => {
   );
 });
 
-export function App() {
-
+const Sudoku = observer(() => {
   return (
     <div className="flex justify-center align-middle h-screen w-[100%] ">
       <div className="flex flex-col justify-center align-middle">
@@ -57,6 +54,6 @@ export function App() {
       </div>
     </div>
   );
-}
+});
 
-export default observer(App);
+export default Sudoku;
