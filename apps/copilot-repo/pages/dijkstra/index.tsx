@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 
 const dijkstra = function (graph, start) {
-// test
+// test to push
     //This contains the distances from the start node to all other nodes
     var distances = [];
     //Initializing with a distance of "Infinity"
