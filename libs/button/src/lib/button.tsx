@@ -11,7 +11,7 @@ export interface ButtonProps {
   color?: keyof typeof classes;
   size?: keyof typeof classes;
   addition?: string;
-  children?: string;
+  children?: any;
   text: string | number;
   variant?: 'primary' | 'secondary';
   isDisabled?: boolean;
@@ -38,6 +38,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button onClick={props.fn} className={cn} disabled={props.isDisabled}>
+      {props.children}
       {/* <button onClick={props.fn} className="p-2 border-2 border-slate-300 transition-all duration-300"> */}
       {props.text}
     </button>

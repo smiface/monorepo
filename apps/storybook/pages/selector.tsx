@@ -13,6 +13,10 @@ export default function SelectorPage() {
           <p className="w-[250px] ">Animated : 300ms duration</p>
           <CustomSelector array={['🐖', '🐈', '🐓']} duration={300} />
         </div>
+        <div className="flex flex-col align justify-center-middle border-2 border-pink-900 w-[300px] mr-3 p-2 ">
+          <p className="w-[250px] ">Animated : 1000ms duration</p>
+          <CustomSelector array={['🐖', '🐈', '🐓']} duration={1000} />
+        </div>
       </div>
     </div>
   );

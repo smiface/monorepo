@@ -10,7 +10,7 @@ export default function ModalPage() {
         <h1 className=" text-2xl pt-4 pb-4">Custom Modal</h1>
 
         <div className="grid grid-cols-6 gap-6">
-          <div className="">
+          <div className="ml-4">
             <h2>Default</h2>
             <CustomModal />
             <p>Can close on background click</p>

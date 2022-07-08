@@ -16,7 +16,7 @@ export const CustomTicker = ({ text = 'no text', duration = '3s' }: CustomTicker
       if (TickerRef.current && TickerRef.current?.style) {
         setMl(ml + 0.1);
       }
-    }, 3);
+    }, 7);
     return () => {
       window.clearTimeout(timeoutID1);
     };

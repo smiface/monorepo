@@ -9,6 +9,7 @@ const links = [
   { href: '/', str: 'home' },
   { href: '/testpage', str: 'testpage' },
   { href: '/navigateAnimation', str: 'navigateAnimation' },
+  { href: '/dragmap', str:  'draggable map'},
 ];
 
 function CustomApp({ Component, pageProps }: AppProps) {

@@ -7,4 +7,5 @@ export const array = [
     { title: 'Infinity Scroll', path: '/infinityScroll' },
     { title: 'Ticker', path: '/ticker' },
     { title: 'filter blocks', path: '/filterBlocks' },
+    
   ];

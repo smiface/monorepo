@@ -16,10 +16,10 @@ const [string, setString] = useState('')
   return (
     <div className="flex flex-col w-[100%]  p-2 m-2 overflow-hidden">
       {/* input onhange settext */}
-      <div>
+      {/* <div>
       <input type="text" value={text} ref={inputRef} value={string} onChange={(e)=> setString(e.target.value)}/>
       <button onClick={()=> setText(inputRef.current.value)}>set</button>
-      </div>
+      </div> */}
       <div className='relative overflow-hidden  p-2 m-2  h-[100%]  '>
         <div className='text-8xl text-cyan-900'>main content</div>
         <div className='text-8xl text-cyan-800'>main content</div>

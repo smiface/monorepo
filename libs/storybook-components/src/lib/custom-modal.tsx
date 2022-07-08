@@ -37,7 +37,7 @@ export const CustomModal = () => {
   const hook = useCustomHook();
   return (
     <div>
-      <Button text="Open modal" fn={hook.toggleShow} addition="ml-4" color="lite" />
+      <Button text="Open modal" fn={hook.toggleShow} addition="" color="lite" />
 
       {hook.isShow ? (
         <div className={hook.modalStr}>
