@@ -17,6 +17,7 @@
     "paths": {
       "@joindev/apollo-main": ["libs/apollo-main/src/index.ts"],
       "@joindev/button": ["libs/button/src/index.ts"],
+      "@joindev/food-diary-components": ["libs/food-diary-components/src/index.ts"],
       "@joindev/header": ["libs/header/src/index.ts"],
       "@joindev/hooks": ["libs/hooks/src/index.ts"],
       "@joindev/nav-link": ["libs/nav-link/src/index.ts"],

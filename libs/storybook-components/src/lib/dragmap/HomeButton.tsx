@@ -25,7 +25,7 @@ export const HomeButton = ({ item, scale, wrapperOffset, imgOffset }: HomeButton
     const f = d - e < 0 ? d - e : 0; // - отступ дома сверху всегда в пикселях
 
     let offLeft = item.left * scale;
-    let offTop = item.top * scale - f - e - d;
+    let offTop = item.top * scale ;
 
     // setLeftOffset(offLeft);
     // setTopOffset(offTop);
@@ -33,7 +33,7 @@ export const HomeButton = ({ item, scale, wrapperOffset, imgOffset }: HomeButton
     //если img левее экрана
     if (imgOffset.x < 0) {
       // надо вычесть отступ дома от левого края экрана
-      offLeft = offLeft + imgOffset.x;
+      setLeftOffset(offLeft + imgOffset.x)
     }
 
     // если img выше экрана
@@ -42,14 +42,15 @@ export const HomeButton = ({ item, scale, wrapperOffset, imgOffset }: HomeButton
       offTop = offTop + imgOffset.y;
     }
 
-    setLeftOffset(offLeft);
     setTopOffset(offTop);
-    console.log('scaled', b);
+    console.log('offTop ', offTop);
   }, [scale]);
 
   useEffect(() => {
     // imgOffset.x насколько img вылез за рамки экрана
     // wrapperOffset.offsetLeft видимый отступ img от левого края экрана
+    console.log('zxc ', imgOffset.y);
+
   }, [imgOffset]);
 
   const handleClick = () => {};

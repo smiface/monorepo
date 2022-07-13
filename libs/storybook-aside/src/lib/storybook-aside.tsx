@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 import { array as mockedArray } from './aside-links';
 
 interface StorybookAsideProps {
-  array: {
+  array?: {
     title: string;
     path: string;
   };
-  isAnimated: boolean;
-  canBeTiny: boolean;
+  isAnimated?: boolean;
+  canBeTiny?: boolean;
 }
 
 const ArrowLeft = () => {
